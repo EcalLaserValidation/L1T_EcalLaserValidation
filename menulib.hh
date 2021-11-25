@@ -1,18 +1,15 @@
 #ifndef menulib_hh
 #define menulib_hh
-/* automatically generated from L1Menu_Collisions2018_v2_0_0 with menu2lib.py */
+/* automatically generated from L1Menu_Collisions2018_v2_1_0 with menu2lib.py */
 /* https://gitlab.cern.ch/cms-l1t-utm/scripts */
 
 #include <string>
 #include <vector>
 #include <functional>
 #include <map>
-#include <cmath>
 
 #include "L1Trigger/L1TNtuples/interface/L1AnalysisL1UpgradeDataFormat.h"
 #include "L1Trigger/L1TNtuples/interface/L1AnalysisL1CaloTowerDataFormat.h"
-
-
 
 //
 // common functions for algorithm implementations
@@ -157,9 +154,17 @@ L1_DoubleEG_LooseIso22_12_er2p5(L1Analysis::L1AnalysisL1UpgradeDataFormat*, L1An
 bool
 L1_DoubleEG_LooseIso25_12_er2p5(L1Analysis::L1AnalysisL1UpgradeDataFormat*, L1Analysis::L1AnalysisL1CaloTowerDataFormat*);
 bool
+L1_DoubleIsoTau28er2p1(L1Analysis::L1AnalysisL1UpgradeDataFormat*, L1Analysis::L1AnalysisL1CaloTowerDataFormat*);
+bool
 L1_DoubleIsoTau28er2p1_Mass_Max80(L1Analysis::L1AnalysisL1UpgradeDataFormat*, L1Analysis::L1AnalysisL1CaloTowerDataFormat*);
 bool
 L1_DoubleIsoTau28er2p1_Mass_Max90(L1Analysis::L1AnalysisL1UpgradeDataFormat*, L1Analysis::L1AnalysisL1CaloTowerDataFormat*);
+bool
+L1_DoubleIsoTau30er2p1(L1Analysis::L1AnalysisL1UpgradeDataFormat*, L1Analysis::L1AnalysisL1CaloTowerDataFormat*);
+bool
+L1_DoubleIsoTau30er2p1_Mass_Max80(L1Analysis::L1AnalysisL1UpgradeDataFormat*, L1Analysis::L1AnalysisL1CaloTowerDataFormat*);
+bool
+L1_DoubleIsoTau30er2p1_Mass_Max90(L1Analysis::L1AnalysisL1UpgradeDataFormat*, L1Analysis::L1AnalysisL1CaloTowerDataFormat*);
 bool
 L1_DoubleIsoTau32er2p1(L1Analysis::L1AnalysisL1UpgradeDataFormat*, L1Analysis::L1AnalysisL1CaloTowerDataFormat*);
 bool
@@ -428,6 +433,10 @@ bool
 L1_Mu18er2p1_Tau26er2p1(L1Analysis::L1AnalysisL1UpgradeDataFormat*, L1Analysis::L1AnalysisL1CaloTowerDataFormat*);
 bool
 L1_Mu20_EG10er2p5(L1Analysis::L1AnalysisL1UpgradeDataFormat*, L1Analysis::L1AnalysisL1CaloTowerDataFormat*);
+bool
+L1_Mu22er2p1_IsoTau28er2p1(L1Analysis::L1AnalysisL1UpgradeDataFormat*, L1Analysis::L1AnalysisL1CaloTowerDataFormat*);
+bool
+L1_Mu22er2p1_IsoTau30er2p1(L1Analysis::L1AnalysisL1UpgradeDataFormat*, L1Analysis::L1AnalysisL1CaloTowerDataFormat*);
 bool
 L1_Mu22er2p1_IsoTau32er2p1(L1Analysis::L1AnalysisL1UpgradeDataFormat*, L1Analysis::L1AnalysisL1CaloTowerDataFormat*);
 bool
