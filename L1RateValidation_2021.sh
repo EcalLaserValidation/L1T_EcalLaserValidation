@@ -147,6 +147,8 @@ filelist=('/store/data/Run2018C/ZeroBias/RAW/v1/000/320/065/00000/1262EAC6-FD8D-
 '/store/data/Run2018C/ZeroBias/RAW/v1/000/320/065/00000/6C521621-328E-E811-9F7E-02163E01A169.root'
 '/store/data/Run2018C/ZeroBias/RAW/v1/000/320/065/00000/DAA6A434-328E-E811-9505-FA163E1455BD.root'
 '/store/data/Run2018C/ZeroBias/RAW/v1/000/320/065/00000/9C55BE18-328E-E811-8ADE-FA163E2B77C9.root'
+'/store/data/Run2018C/ZeroBias/RAW/v1/000/320/065/00000/B2460E21-328E-E811-B80B-FA163E34934D.root'
+'/store/data/Run2018C/ZeroBias/RAW/v1/000/320/065/00000/9A73591B-328E-E811-86A2-FA163E95D929.root'
 )
 #echo $filelist
 #----------------------------------------------------------------------------#
