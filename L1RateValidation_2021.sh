@@ -197,22 +197,22 @@ echo "Running ECal validtion with ", $sqs
 source /cvmfs/cms.cern.ch/cmsset_default.sh
 export SCRAM_ARCH=$ARCH
 export CMSSW_GIT_REFERENCE=/cvmfs/cms.cern.ch/cmssw.git.daily
-#scramv1 project CMSSW $CMSREL
+scramv1 project CMSSW $CMSREL
 cd $CMSREL/src
 eval `scramv1 runtime -sh`
-#git-cms-init
-#git remote add cms-l1t-offline git@github.com:cms-l1t-offline/cmssw.git
-#git fetch cms-l1t-offline l1t-integration-CMSSW_12_0_2
-#git cms-merge-topic -u cms-l1t-offline:$L1TTag
+git-cms-init
+git remote add cms-l1t-offline git@github.com:cms-l1t-offline/cmssw.git
+git fetch cms-l1t-offline l1t-integration-CMSSW_12_0_2
+git cms-merge-topic -u cms-l1t-offline:$L1TTag
 #git cms-addpkg L1Trigger/L1TCommon
 #git cms-addpkg L1Trigger/L1TMuon
 #git clone https://github.com/cms-l1t-offline/L1Trigger-L1TMuon.git L1Trigger/L1TMuon/data
 #git cms-addpkg L1Trigger/L1TCalorimeter
 #git clone https://github.com/cms-l1t-offline/L1Trigger-L1TCalorimeter.git L1Trigger/L1TCalorimeter/data
 
-#git cms-checkdeps -A -a
+git cms-checkdeps -A -a
 
-#scram b -j ${nproc}
+scram b -j ${nproc}
 
 dur=$(echo "$(date +%s.%N) - $starttime" | bc)
 printf "Execution time to L1T checkout: %.6f seconds" $dur
@@ -256,7 +256,7 @@ done
 
 ################################
 
-:'
+
 #----------------------------------------------------------------------------#
 #                            Check out L1Menu code                           #
 #----------------------------------------------------------------------------#
@@ -334,6 +334,6 @@ cp compRate.csv ${WORKSPACE}/upload/${2}/
 #done
 cd ${WORKSPACE}/upload/${2}
 tar -czvf ${WORKSPACE}/upload/L1TEcalValidation_${year}_${week}_${sqlite2}.tgz *
-:'
+
 dur=$(echo "($(date +%s.%N) - $starttime)/60" | bc)
 printf "Execution time of workflow: %.6f minutes" $dur
