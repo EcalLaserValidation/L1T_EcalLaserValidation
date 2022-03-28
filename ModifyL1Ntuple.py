@@ -39,7 +39,7 @@ if __name__ == "__main__":
             outfile.write('            connect =cms.string("sqlite_file:%s/EcalTPG_%s_moved_to_1.db"),\n' % (os.getcwd(), args.SQ))
             outfile.write('            ),\n')
             outfile.write('   cms.PSet(record = cms.string("EcalTPGPedestalsRcd"),\n')
-            outfile.write('            tag = cms.string("EcalTPGPedestals_%s_beginning_at_1"),\n' % args.SQ)
+            outfile.write('            tag = cms.string("EcalTPGPedestals_IOV_%s_beginning_at_1"),\n' % args.SQ)
             outfile.write('            connect =cms.string("sqlite_file:%s/EcalTPG_%s_moved_to_1.db"),\n' % (os.getcwd(), args.SQ))
             outfile.write('            ),\n')
             outfile.write(')\n')
