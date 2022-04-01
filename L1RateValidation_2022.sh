@@ -233,7 +233,7 @@ for sq in $sqs; do
     let cnt1=$(($i*$NfpJ))
     args=`printf "inputFiles=%s " "${filelist[@]:$cnt1:$NfpJ}"`
     args+=`echo outputFile=L1Ntuple_${GT}_${sq}_${i}.root`
-    cmsRun l1Ntuple_${GT}_${sq}.py `echo $args` >& l1Ntuple_${GT}_${sq}_${i}.log  &
+    timeout 1800 cmsRun l1Ntuple_${GT}_${sq}.py `echo $args` >& l1Ntuple_${GT}_${sq}_${i}.log  &
     pids="$pids $!"
   done
 done
