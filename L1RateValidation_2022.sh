@@ -216,7 +216,7 @@ echo running $GT
 cmsDriver.py l1NtupleRAWEMU_2018 -s RAW2DIGI --era=Run2_2018  \
   --customise=L1Trigger/L1TNtuples/customiseL1Ntuple.L1NtupleRAWEMU \
   --customise=L1Trigger/Configuration/customiseReEmul.L1TReEmulFromRAWsimEcalTP \
-  --conditions=$GT -n 20000 --data --no_exec --no_output  \
+  --conditions=$GT -n 10000 --data --no_exec --no_output  \
   --filein=inputFiles \
   --python_filename=l1Ntuple_${GT}.py 
 Nsq=`echo $sqs | awk -F ' ' '{print NF}'`
@@ -233,7 +233,7 @@ for sq in $sqs; do
     let cnt1=$(($i*$NfpJ))
     args=`printf "inputFiles=%s " "${filelist[@]:$cnt1:$NfpJ}"`
     args+=`echo outputFile=L1Ntuple_${GT}_${sq}_${i}.root`
-    timeout 3600 cmsRun l1Ntuple_${GT}_${sq}.py `echo $args` >& l1Ntuple_${GT}_${sq}_${i}.log  &
+    timout 7200 cmsRun l1Ntuple_${GT}_${sq}.py `echo $args` >& l1Ntuple_${GT}_${sq}_${i}.log  &
     pids="$pids $!"
   done
 done
