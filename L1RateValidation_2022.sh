@@ -176,7 +176,7 @@ set +e
 #wget --no-check-certificate https://cmssdt.cern.ch/SDT/public/EcalLaserValidation/L1T_EcalLaserValidation/345982/L1TEcalValidation_2021_48_345982.tgz 
 wget --no-check-certificate https://cmssdt.cern.ch/SDT/public/EcalLaserValidation/L1T_EcalLaserValidation/${sqlite1}/L1TEcalValidation_${year}_${week}_${sqlite1}.tgz 
 if [ $? -ne 0 ]; then
-  lastweek=${week}-1
+  lastweek=$((${week}-1))
   wget --no-check-certificate https://cmssdt.cern.ch/SDT/public/EcalLaserValidation/L1T_EcalLaserValidation/${sqlite1}/L1TEcalValidation_${year}_${lastweek}_${sqlite1}.tgz
   if [ $? -ne 0 ]; then
   sqs="$sqlite1 $sqlite2"
