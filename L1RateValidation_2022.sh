@@ -181,10 +181,16 @@ if [ $? -ne 0 ]; then
   if [ $? -ne 0 ]; then
   sqs="$sqlite1 $sqlite2"
 	else
+	ls *.tgz >listtgz.txt
+	sqlitetgz=`less listtgz.txt|awk 'print{$1}'`
+	mv ${sqlitetgz} ${sqlite1}.tgz
 	sqs=$sqlite2
   	hasref=true
 	fi
   else
+  ls *.tgz >listtgz.txt
+  sqlitetgz=`less listtgz.txt|awk 'print{$1}'`
+  mv ${sqlitetgz} ${sqlite1}.tgz
   sqs=$sqlite2
   hasref=true
 fi
@@ -312,7 +318,7 @@ cp L1Seed_${GT}_*_emu.log ${WORKSPACE}/upload/${2}/
 if $hasref; then
 #  tar -xzvf $curdir/L1TEcalValidation_2021_48_345982.tgz -C results/
   mkdir results
-  tar -xzvf $curdir/L1TEcalValidation_${year}_${week}_${sqlite1}.tgz -C results/
+  tar -xzvf $curdir/${sqlite1}.tgz -C results/
 fi
 
 ls results/
