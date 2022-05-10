@@ -176,23 +176,12 @@ set +e
 #wget --no-check-certificate https://cmssdt.cern.ch/SDT/public/EcalLaserValidation/L1T_EcalLaserValidation/345982/L1TEcalValidation_2021_48_345982.tgz 
 wget --no-check-certificate https://cmssdt.cern.ch/SDT/public/EcalLaserValidation/L1T_EcalLaserValidation/${sqlite1}/L1TEcalValidation_${year}_${week}_${sqlite1}.tgz 
 if [ $? -ne 0 ]; then
-  lastweek=$((${week}-1))
-  wget --no-check-certificate https://cmssdt.cern.ch/SDT/public/EcalLaserValidation/L1T_EcalLaserValidation/${sqlite1}/L1TEcalValidation_${year}_${lastweek}_${sqlite1}.tgz
+  wget --no-check-certificate https://cmssdt.cern.ch/SDT/public/EcalLaserValidation/L1T_EcalLaserValidation/${sqlite1}/L1TEcalValidation_${sqlite1}.tgz
   if [ $? -ne 0 ]; then
-  sqs="$sqlite1 $sqlite2"
-	else
-	ls *.tgz >listtgz.txt
-	sqlitetgz=`less listtgz.txt|awk 'print{$1}'`
-	mv ${sqlitetgz} ${sqlite1}.tgz
-	sqs=$sqlite2
-  	hasref=true
-	fi
+   sqs="$sqlite1 $sqlite2"
   else
-  ls *.tgz >listtgz.txt
-  sqlitetgz=`less listtgz.txt|awk 'print{$1}'`
-  mv ${sqlitetgz} ${sqlite1}.tgz
-  sqs=$sqlite2
-  hasref=true
+   sqs=$sqlite2
+   hasref=true
 fi
 #sqs="$sqlite1 $sqlite2"
 echo "Running ECal validtion with ", $sqs
@@ -318,7 +307,7 @@ cp L1Seed_${GT}_*_emu.log ${WORKSPACE}/upload/${2}/
 if $hasref; then
 #  tar -xzvf $curdir/L1TEcalValidation_2021_48_345982.tgz -C results/
   mkdir results
-  tar -xzvf $curdir/${sqlite1}.tgz -C results/
+  tar -xzvf $curdir/L1TEcalValidation_${sqlite1}.tgz -C results/
 fi
 
 ls results/
@@ -341,7 +330,7 @@ cp compRate.csv ${WORKSPACE}/upload/${2}/
 #  cp  results/comparePlots/Rate/${i}  ${WORKSPACE}/upload/${2}/
 #done
 cd ${WORKSPACE}/upload/${2}
-tar -czvf ${WORKSPACE}/upload/L1TEcalValidation_${year}_${week}_${sqlite2}.tgz *
+tar -czvf ${WORKSPACE}/upload/L1TEcalValidation_${sqlite2}.tgz *
 
 dur=$(echo "($(date +%s.%N) - $starttime)/60" | bc)
 printf "Execution time of workflow: %.6f minutes" $dur
