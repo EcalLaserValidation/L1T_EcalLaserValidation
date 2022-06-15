@@ -6,7 +6,7 @@ echo " "
 
 ###############################
 starttime=$(date +%s.%N)
-ARCH=slc7_amd64_gcc900
+ARCH=slc7_amd64_gcc10
 CMSREL=CMSSW_12_3_0_pre6
 L1TTag=l1t-integration-v127.0
 GT=123X_dataRun2_v1
@@ -195,8 +195,10 @@ cd $CMSREL/src
 eval `scramv1 runtime -sh`
 git-cms-init
 git remote add cms-l1t-offline git@github.com:cms-l1t-offline/cmssw.git
-git fetch cms-l1t-offline l1t-integration-CMSSW_12_0_2
+git fetch cms-l1t-offline l1t-integration-CMSSW_12_3_0_pre6
 git cms-merge-topic -u cms-l1t-offline:$L1TTag
+git clone https://github.com/cms-l1t-offline/L1Trigger-L1TCalorimeter.git L1Trigger/L1TCalorimeter/data
+
 #git cms-addpkg L1Trigger/L1TCommon
 #git cms-addpkg L1Trigger/L1TMuon
 #git clone https://github.com/cms-l1t-offline/L1Trigger-L1TMuon.git L1Trigger/L1TMuon/data
