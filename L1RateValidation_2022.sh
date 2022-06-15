@@ -309,6 +309,7 @@ cp L1Seed_${GT}_*_emu.log ${WORKSPACE}/upload/${2}/
 
 if $hasref; then
 #  tar -xzvf $curdir/L1TEcalValidation_2021_48_345982.tgz -C results/
+echo " mkdir results"
   mkdir results
   tar -xzvf $curdir/L1TEcalValidation_${sqlite1}.tgz -C results/
 fi
