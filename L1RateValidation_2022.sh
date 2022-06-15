@@ -7,9 +7,9 @@ echo " "
 ###############################
 starttime=$(date +%s.%N)
 ARCH=slc7_amd64_gcc900
-CMSREL=CMSSW_12_0_2
-L1TTag=l1t-integration-v109.0
-GT=120X_dataRun2_v2
+CMSREL=CMSSW_12_3_0_pre6
+L1TTag=l1t-integration-v127.0
+GT=123X_dataRun2_v1
 Prescale=Prescale_2018_v2_1_0_Col_2.0.txt
 nproc=`nproc`
 sqlite1=$1 ##ref
