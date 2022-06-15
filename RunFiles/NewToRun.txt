@@ -1,5 +1,5 @@
-week 48
-year 2018
-run1 327385
-run2 327466
+week 24
+year 2022
+run1 353689
+run2 353737
 type laser
