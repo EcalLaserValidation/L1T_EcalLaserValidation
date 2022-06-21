@@ -1,5 +1,5 @@
 week 25
 year 2022
-run1 354099
-run2 346455
+run1 353689
+run2 354099
 type laser
