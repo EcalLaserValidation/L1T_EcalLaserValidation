@@ -1,4 +1,4 @@
-week 35
+week 36
 year 2022
 run1 357803
 run2 357896
