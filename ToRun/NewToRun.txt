@@ -1,5 +1,5 @@
-week 41
+week 42
 year 2022
-run1 360459
-run2 360486
+run1 360486
+run2 360794
 type laser
