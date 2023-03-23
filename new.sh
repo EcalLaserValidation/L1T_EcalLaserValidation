@@ -11,7 +11,7 @@ echo ToRun/$file
 cp ToRun/$file RunFiles/.
 rm ToRun/$file
 echo "./L1RateValidation_2022.sh $sqlite1 $sqlite2 $week $year"
-./L1RateValidation_2022.sh $sqlite1 $sqlite2 $week $year 
+./L1RateValidation_2023.sh $sqlite1 $sqlite2 $week $year 
 git commit -a -m "clean ToRun files"
 git push
 else
