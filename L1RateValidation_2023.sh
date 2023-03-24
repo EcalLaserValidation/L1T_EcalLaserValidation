@@ -232,6 +232,10 @@ cmsDriver.py l1Ntuple -s RAW2DIGI --python_filename=l1Ntuple_${GT}.py -n -1 \
 	     --customise=L1Trigger/L1TNtuples/customiseL1Ntuple.L1NtupleAODRAWEMU \
 	     --filein=inputFiles 
 
+#for release CMSSW_13_0_0_pre4 and GT: 130X_dataRun3_Prompt_v1 I need to add this line SkipEvent = cms.untracked.vstring('ProductNotFound')
+#replacing this one SkipEvent = cms.untracked.vstring()
+var="SkipEvent = cms.untracked.vstring(\'ProductNotFound\')"
+sed -i "s/SkipEvent = cms.untracked.vstring()/$var/g" l1Ntuple_${GT}.py
 
 Nsq=`echo $sqs | awk -F ' ' '{print NF}'`
 #Nfiles=$((wc -l <fileList_320065.txt))
