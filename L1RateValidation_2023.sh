@@ -272,7 +272,7 @@ cp $curdir/CompL1Rate.py  .
 cp $curdir/menulib.cc .
 cp $curdir/menulib.hh .
 cp $curdir/$Prescale menu/
-cp $curdir/run_lumi.csv menu/
+cp $curdir/Lumi_362760.csv menu/.
 cp $curdir/Selected_Seed.txt menu/
 mkdir -p objs/include
 make -j ${nproc}
