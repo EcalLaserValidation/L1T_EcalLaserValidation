@@ -174,6 +174,7 @@ fi
 ## prevent exit from failed wget
 set +e 
 #wget --no-check-certificate https://cmssdt.cern.ch/SDT/public/EcalLaserValidation/L1T_EcalLaserValidation/345982/L1TEcalValidation_2021_48_345982.tgz 
+:'
 wget --no-check-certificate https://cmssdt.cern.ch/SDT/public/EcalLaserValidation/L1T_EcalLaserValidation/${sqlite1}/L1TEcalValidation_${sqlite1}.tgz 
 if [ $? -ne 0 ]; then
    sqs="$sqlite1 $sqlite2"
@@ -181,7 +182,8 @@ if [ $? -ne 0 ]; then
    sqs=$sqlite2
    hasref=true
 fi
-#sqs="$sqlite1 $sqlite2"
+:'
+sqs="$sqlite1 $sqlite2"
 echo "Running ECal validtion with ", $sqs
 
 #----------------------------------------------------------------------------#
@@ -223,7 +225,7 @@ cmsDriver.py l1NtupleRAWEMU_2018 -s RAW2DIGI --era=Run2_2018  \
   --filein=inputFiles \
   --python_filename=l1Ntuple_${GT}.py
 :'
-cmsDriver.py l1Ntuple -s RAW2DIGI --python_filename=l1Ntuple_${GT}.py -n 4000 \
+cmsDriver.py l1Ntuple -s RAW2DIGI --python_filename=l1Ntuple_${GT}.py -n -1 \
 	     --no_output --no_exec --era=Run3 --data --conditions=$GT \
 	     --customise=L1Trigger/Configuration/customiseReEmul.L1TReEmulFromRAW \
 	     --customise=L1Trigger/Configuration/customiseSettings.L1TSettingsToCaloParams_2022_v0_3 \
