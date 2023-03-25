@@ -225,7 +225,7 @@ cmsDriver.py l1NtupleRAWEMU_2018 -s RAW2DIGI --era=Run2_2018  \
   --filein=inputFiles \
   --python_filename=l1Ntuple_${GT}.py
 :'
-cmsDriver.py l1Ntuple -s RAW2DIGI --python_filename=l1Ntuple_${GT}.py -n -1 \
+cmsDriver.py l1Ntuple -s RAW2DIGI --python_filename=l1Ntuple_${GT}.py -n 1000 \
 	     --no_output --no_exec --era=Run3 --data --conditions=$GT \
 	     --customise=L1Trigger/Configuration/customiseReEmul.L1TReEmulFromRAW \
 	     --customise=L1Trigger/Configuration/customiseSettings.L1TSettingsToCaloParams_2022_v0_3 \
@@ -233,7 +233,7 @@ cmsDriver.py l1Ntuple -s RAW2DIGI --python_filename=l1Ntuple_${GT}.py -n -1 \
 	     --filein=inputFiles 
 
 #for release CMSSW_13_0_0_pre4 and GT: 130X_dataRun3_Prompt_v1 I need to add this line SkipEvent = cms.untracked.vstring('ProductNotFound')
-#replacing this one SkipEvent = cms.untracked.vstring()
+#replacing this one SkipEvent = cms.untracked.vstring()\March 24, 2023
 var="SkipEvent = cms.untracked.vstring(\'ProductNotFound\')"
 sed -i "s/SkipEvent = cms.untracked.vstring()/$var/g" l1Ntuple_${GT}.py
 
@@ -251,8 +251,8 @@ for sq in $sqs; do
     let cnt1=$(($i*$NfpJ))
     args=`printf "inputFiles=%s " "${filelist[@]:$cnt1:$NfpJ}"`
     args+=`echo outputFile=L1Ntuple_${GT}_${sq}_${i}.root`
-    echo "timeout 3600 cmsRun l1Ntuple_${GT}_${sq}.py `echo $args` >& l1Ntuple_${GT}_${sq}_${i}.log  &"
-    timeout 3600 cmsRun l1Ntuple_${GT}_${sq}.py `echo $args` >& l1Ntuple_${GT}_${sq}_${i}.log  &
+    echo "timeout 7200 cmsRun l1Ntuple_${GT}_${sq}.py `echo $args` >& l1Ntuple_${GT}_${sq}_${i}.log  &"
+    timeout 7200 cmsRun l1Ntuple_${GT}_${sq}.py `echo $args` >& l1Ntuple_${GT}_${sq}_${i}.log  &
     pids="$pids $!"
   done
 done
