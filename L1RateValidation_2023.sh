@@ -20,7 +20,7 @@ curdir=$PWD
 username=$USER
 pids=""
 hasref=false
-## ZeroBias Raw, Fill#8496 Run362760, LS1-225.6<=fixme
+## ZeroBias Raw, Fill#8128 Run357479, LS1-945
 filelist=('/store/data/Run2022C/ZeroBias/RAW/v1/000/357/479/00000/00c36f93-776b-4fd9-973a-2daf58e51b45.root'
 '/store/data/Run2022C/ZeroBias/RAW/v1/000/357/479/00000/02caebd0-de05-4352-a7fa-8e37b75a6710.root'
 '/store/data/Run2022C/ZeroBias/RAW/v1/000/357/479/00000/030fc479-ba14-4952-a146-12406a4b7c37.root'
@@ -224,7 +224,7 @@ cmsDriver.py l1NtupleRAWEMU_2018 -s RAW2DIGI --era=Run2_2018  \
   --filein=inputFiles \
   --python_filename=l1Ntuple_${GT}.py
 :'
-cmsDriver.py l1Ntuple -s RAW2DIGI --python_filename=l1Ntuple_${GT}.py -n 1000 \
+cmsDriver.py l1Ntuple -s RAW2DIGI --python_filename=l1Ntuple_${GT}.py -n 8000 \
 	     --no_output --no_exec --era=Run3 --data --conditions=$GT \
 	     --customise=L1Trigger/Configuration/customiseReEmul.L1TReEmulFromRAW \
 	     --customise=L1Trigger/Configuration/customiseSettings.L1TSettingsToCaloParams_2022_v0_3 \
@@ -277,7 +277,7 @@ cp $curdir/CompL1Rate.py  .
 cp $curdir/menulib.cc .
 cp $curdir/menulib.hh .
 cp $curdir/$Prescale menu/
-cp $curdir/Lumi_362760.csv menu/.
+cp $curdir/Lumi_357479.csv menu/.
 cp $curdir/Selected_Seed.txt menu/
 mkdir -p objs/include
 make -j ${nproc}
@@ -302,12 +302,12 @@ printf "Execution time to checkout and compile code: %.6f minutes" $dur
 #----------------------------------------------------------------------------#
 
 for sq in $sqs; do
- echo " ./testMenu2016 -u menu/Lumi_362760.csv -m menu/$Prescale -l ${CMSSW_BASE}/src/L1Ntuple_${GT}_${sq}.list -o L1Menu_${GT}_${sq}_emu -b 2378 --doPlotRate --doPlotEff  --SelectCol 2E+34 >& L1Menu_${GT}_${sq}_emu.log &"
-   ./testMenu2016 -u menu/Lumi_362760.csv -m menu/$Prescale -l ${CMSSW_BASE}/src/L1Ntuple_${GT}_${sq}.list -o L1Menu_${GT}_${sq}_emu -b 2378 --doPlotRate --doPlotEff  --SelectCol 2E+34 >& L1Menu_${GT}_${sq}_emu.log &
-#  ./testMenu2016 -u menu/run_lumi.csv -m menu/$Prescale -l ${CMSSW_BASE}/src/L1Ntuple_${GT}_${sq}.list -o L1Menu_${GT}_${sq}_emu -b 2378 --doPlotRate --doPlotEff >& L1Menu_${GT}_${sq}_emu.log &
+ echo " ./testMenu2016 -u menu/Lumi_357479.csv -m menu/$Prescale -l ${CMSSW_BASE}/src/L1Ntuple_${GT}_${sq}.list -o L1Menu_${GT}_${sq}_emu -b 2400 --doPlotRate --doPlotEff  --SelectCol 1.7E+34 >& L1Menu_${GT}_${sq}_emu.log &"
+   ./testMenu2016 -u menu/Lumi_362760.csv -m menu/$Prescale -l ${CMSSW_BASE}/src/L1Ntuple_${GT}_${sq}.list -o L1Menu_${GT}_${sq}_emu -b 2400 --doPlotRate --doPlotEff  --SelectCol 1.7E+34 >& L1Menu_${GT}_${sq}_emu.log &
+#  ./testMenu2016 -u menu/run_lumi.csv -m menu/$Prescale -l ${CMSSW_BASE}/src/L1Ntuple_${GT}_${sq}.list -o L1Menu_${GT}_${sq}_emu -b 2400 --doPlotRate --doPlotEff >& L1Menu_${GT}_${sq}_emu.log &
   pids="$pids $!"
-echo "  ./testMenu2016 --doPlotRate -m menu/Selected_Seed.txt -l ${CMSSW_BASE}/src/L1Ntuple_${GT}_${sq}.list -o L1Seed_${GT}_${sq}_emu  --SelectCol 2E+34 >& L1Seed_${GT}_${sq}_emu.log &"
-   ./testMenu2016 --doPlotRate -m menu/Selected_Seed.txt -l ${CMSSW_BASE}/src/L1Ntuple_${GT}_${sq}.list -o L1Seed_${GT}_${sq}_emu  --SelectCol 2E+34 >& L1Seed_${GT}_${sq}_emu.log &
+echo "  ./testMenu2016 --doPlotRate -m menu/Selected_Seed.txt -l ${CMSSW_BASE}/src/L1Ntuple_${GT}_${sq}.list -o L1Seed_${GT}_${sq}_emu  --SelectCol 1.7E+34 >& L1Seed_${GT}_${sq}_emu.log &"
+   ./testMenu2016 --doPlotRate -m menu/Selected_Seed.txt -l ${CMSSW_BASE}/src/L1Ntuple_${GT}_${sq}.list -o L1Seed_${GT}_${sq}_emu  --SelectCol 1.7E+34 >& L1Seed_${GT}_${sq}_emu.log &
 #  ./testMenu2016 --doPlotRate -m menu/Selected_Seed.txt -l ${CMSSW_BASE}/src/L1Ntuple_${GT}_${sq}.list -o L1Seed_${GT}_${sq}_emu >& L1Seed_${GT}_${sq}_emu.log &
   pids="$pids $!"
 done
