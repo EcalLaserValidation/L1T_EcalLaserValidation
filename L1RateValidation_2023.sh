@@ -227,7 +227,7 @@ cmsDriver.py l1NtupleRAWEMU_2018 -s RAW2DIGI --era=Run2_2018  \
 cmsDriver.py l1Ntuple -s RAW2DIGI --python_filename=l1Ntuple_${GT}.py -n 1000 \
 	     --no_output --no_exec --era=Run3 --data --conditions=$GT \
 	     --customise=L1Trigger/Configuration/customiseReEmul.L1TReEmulFromRAW \
-	     --customise=L1Trigger/Configuration/customiseSettings.L1TSettingsToCaloParams_2022_v0_3 \
+	     --customise=L1Trigger/Configuration/customiseSettings.L1TSettingsToCaloParams_2022_v0_6 \
 	     --customise=L1Trigger/L1TNtuples/customiseL1Ntuple.L1NtupleAODRAWEMU \
 	     --filein=inputFiles 
 
