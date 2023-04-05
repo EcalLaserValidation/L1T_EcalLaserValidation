@@ -239,7 +239,7 @@ cmsDriver.py l1Ntuple -s RAW2DIGI --python_filename=l1Ntuple_${GT}.py -n 100 \
 #replacing this one SkipEvent = cms.untracked.vstring()\March 24, 2023
 #var="SkipEvent = cms.untracked.vstring(\'ProductNotFound\')"
 #sed -i "s/SkipEvent = cms.untracked.vstring()/$var/g" l1Ntuple_${GT}.py
-nevents=100
+nevents=4000
 Nsq=`echo $sqs | awk -F ' ' '{print NF}'`
 #Nfiles=$((wc -l <fileList_320065.txt))
 Nfiles=${#filelist[@]}
