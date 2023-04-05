@@ -249,7 +249,7 @@ for sq in $sqs; do
     wget http://cern.ch/ecaltrg/EcalLin/EcalTPG_${sq}_moved_to_1.db
   fi
   python ${curdir}/ModifyL1Ntuple.py --globalTag $GT --sqlite $sq
-  cp L1Ntuple_${GT}_${sq}_*.py ${WORKSPACE}/upload/${2}/.
+  cp L1Ntuple_${GT}_${sq}.py ${WORKSPACE}/upload/${2}/.
   for ((i = 0; i < $NJ; i++)); do
     let cnt1=$(($i*$NfpJ))
     args=`printf "inputFiles=%s " "${filelist[@]:$cnt1:$NfpJ}"`
