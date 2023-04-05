@@ -106,6 +106,15 @@ from L1Trigger.Configuration.customiseSettings import L1TSettingsToCaloParams_20
 #call to customisation function L1TSettingsToCaloParams_2022_v0_6 imported from L1Trigger.Configuration.customiseSettings
 process = L1TSettingsToCaloParams_2022_v0_6(process)
 
+
+# Automatic addition of the customisation function from L1Trigger.L1TNtuples.customiseL1Ntuple
+from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleAODRAWEMU 
+
+#call to customisation function L1NtupleAODRAWEMU imported from L1Trigger.L1TNtuples.customiseL1Ntuple
+process = L1NtupleAODRAWEMU(process)
+
+# End of customisation functions
+
 # Other statements
 from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, '130X_dataRun3_Prompt_v1', '')
@@ -119,15 +128,6 @@ process.GlobalTag.toGet = cms.VPSet(
             connect =cms.string("sqlite_file:/data/cmsbld/cms-jenkins/workspace/run-EcalLaserValidation-L1T_EcalLaserValidation-push-tests/userrepo/CMSSW_13_0_0_pre4/src/EcalTPG_%iov%_moved_to_1.db"),
             ),
 )
-# Automatic addition of the customisation function from L1Trigger.L1TNtuples.customiseL1Ntuple
-from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleAODRAWEMU 
-
-#call to customisation function L1NtupleAODRAWEMU imported from L1Trigger.L1TNtuples.customiseL1Ntuple
-process = L1NtupleAODRAWEMU(process)
-
-# End of customisation functions
-
-
 # Customisation from command line
 
 #Have logErrorHarvester wait for the same EDProducers to finish as those providing data for the OutputModule
