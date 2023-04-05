@@ -99,6 +99,19 @@ from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAW
 
 #call to customisation function L1TReEmulFromRAW imported from L1Trigger.Configuration.customiseReEmul
 process = L1TReEmulFromRAW(process)
+# Other statements
+from Configuration.AlCa.GlobalTag import GlobalTag
+process.GlobalTag = GlobalTag(process.GlobalTag, '130X_dataRun3_Prompt_v1', '')
+process.GlobalTag.toGet = cms.VPSet(
+   cms.PSet(record = cms.string("EcalTPGLinearizationConstRcd"),
+            tag = cms.string("EcalTPGLinearizationConst_IOV_%iov%_beginning_at_1"),
+            connect =cms.string("sqlite_file:/data/cmsbld/cms-jenkins/workspace/run-EcalLaserValidation-L1T_EcalLaserValidation-push-tests/userrepo/CMSSW_13_0_0_pre4/src/EcalTPG_%iov%_moved_to_1.db"),
+            ),
+   cms.PSet(record = cms.string("EcalTPGPedestalsRcd"),
+            tag = cms.string("EcalTPGPedestals_IOV_%iov%_beginning_at_1"),
+            connect =cms.string("sqlite_file:/data/cmsbld/cms-jenkins/workspace/run-EcalLaserValidation-L1T_EcalLaserValidation-push-tests/userrepo/CMSSW_13_0_0_pre4/src/EcalTPG_%iov%_moved_to_1.db"),
+            ),
+)
 
 # Automatic addition of the customisation function from L1Trigger.Configuration.customiseSettings
 from L1Trigger.Configuration.customiseSettings import L1TSettingsToCaloParams_2022_v0_6 
@@ -115,19 +128,6 @@ process = L1NtupleAODRAWEMU(process)
 
 # End of customisation functions
 
-# Other statements
-from Configuration.AlCa.GlobalTag import GlobalTag
-process.GlobalTag = GlobalTag(process.GlobalTag, '130X_dataRun3_Prompt_v1', '')
-process.GlobalTag.toGet = cms.VPSet(
-   cms.PSet(record = cms.string("EcalTPGLinearizationConstRcd"),
-            tag = cms.string("EcalTPGLinearizationConst_IOV_%iov%_beginning_at_1"),
-            connect =cms.string("sqlite_file:/data/cmsbld/cms-jenkins/workspace/run-EcalLaserValidation-L1T_EcalLaserValidation-push-tests/userrepo/CMSSW_13_0_0_pre4/src/EcalTPG_%iov%_moved_to_1.db"),
-            ),
-   cms.PSet(record = cms.string("EcalTPGPedestalsRcd"),
-            tag = cms.string("EcalTPGPedestals_IOV_%iov%_beginning_at_1"),
-            connect =cms.string("sqlite_file:/data/cmsbld/cms-jenkins/workspace/run-EcalLaserValidation-L1T_EcalLaserValidation-push-tests/userrepo/CMSSW_13_0_0_pre4/src/EcalTPG_%iov%_moved_to_1.db"),
-            ),
-)
 # Customisation from command line
 
 #Have logErrorHarvester wait for the same EDProducers to finish as those providing data for the OutputModule
