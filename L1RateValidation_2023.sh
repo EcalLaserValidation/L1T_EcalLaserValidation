@@ -228,7 +228,7 @@ cmsDriver.py l1NtupleRAWEMU_2018 -s RAW2DIGI --era=Run2_2018  \
   --python_filename=l1Ntuple_${GT}.py
 :'
 #now trying this with file: l1Ntuple_${GT}.py from the git repository 05 april 2023
-cmsDriver.py l1Ntuple -s RAW2DIGI --python_filename=l1Ntuple_${GT}.py -n 100 \
+cmsDriver.py l1Ntuple -s RAW2DIGI --python_filename=l1Ntuple_${GT}.py -n 4000 \
 	     --no_output --no_exec --era=Run3 --data --conditions=$GT \
 	     --customise=L1Trigger/Configuration/customiseReEmul.L1TReEmulFromRAW  \
 	     --customise=L1Trigger/Configuration/customiseSettings.L1TSettingsToCaloParams_2022_v0_6 \
@@ -239,7 +239,7 @@ cmsDriver.py l1Ntuple -s RAW2DIGI --python_filename=l1Ntuple_${GT}.py -n 100 \
 #replacing this one SkipEvent = cms.untracked.vstring()\March 24, 2023
 var="SkipEvent = cms.untracked.vstring(\'ProductNotFound\')"
 sed -i "s/SkipEvent = cms.untracked.vstring()/$var/g" l1Ntuple_${GT}.py
-nevents=4000
+#nevents=4000
 Nsq=`echo $sqs | awk -F ' ' '{print NF}'`
 #Nfiles=$((wc -l <fileList_320065.txt))
 Nfiles=${#filelist[@]}
