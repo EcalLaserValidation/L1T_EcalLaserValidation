@@ -82,23 +82,6 @@ process.configurationMetadata = cms.untracked.PSet(
 # Additional output definition
 
 process.MessageLogger.cerr.FwkReport.reportEvery = 10000
-
-# Path and EndPath definitions
-process.raw2digi_step = cms.Path(process.RawToDigi)
-process.endjob_step = cms.EndPath(process.endOfProcess)
-
-# Schedule definition
-process.schedule = cms.Schedule(process.raw2digi_step,process.endjob_step)
-from PhysicsTools.PatAlgos.tools.helpers import associatePatAlgosToolsTask
-associatePatAlgosToolsTask(process)
-
-# customisation of the process.
-
-# Automatic addition of the customisation function from L1Trigger.Configuration.customiseReEmul
-from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAW 
-
-#call to customisation function L1TReEmulFromRAW imported from L1Trigger.Configuration.customiseReEmul
-process = L1TReEmulFromRAW(process)
 # Other statements
 from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, '130X_dataRun3_Prompt_v1', '')
@@ -112,6 +95,29 @@ process.GlobalTag.toGet = cms.VPSet(
             connect =cms.string("sqlite_file:/data/cmsbld/cms-jenkins/workspace/run-EcalLaserValidation-L1T_EcalLaserValidation-push-tests/userrepo/CMSSW_13_0_0_pre4/src/EcalTPG_%iov%_moved_to_1.db"),
             ),
 )
+
+# Path and EndPath definitions
+process.raw2digi_step = cms.Path(process.RawToDigi)
+process.endjob_step = cms.EndPath(process.endOfProcess)
+
+# Schedule definition
+process.schedule = cms.Schedule(process.raw2digi_step,process.endjob_step)
+from PhysicsTools.PatAlgos.tools.helpers import associatePatAlgosToolsTask
+associatePatAlgosToolsTask(process)
+
+# customisation of the process.
+
+# Automatic addition of the customisation function from L1Trigger.Configuration.customiseReEmul
+#from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAW 
+
+#call to customisation function L1TReEmulFromRAW imported from L1Trigger.Configuration.customiseReEmul
+#process = L1TReEmulFromRAW(process)
+
+# Automatic addition of the customisation function from L1Trigger.Configuration.customiseReEmul
+from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAWsimEcalTP
+
+#call to customisation function L1TReEmulFromRAWsimEcalTP imported from L1Trigger.Configuration.customiseReEmul
+process = L1TReEmulFromRAWsimEcalTP(process)
 
 # Automatic addition of the customisation function from L1Trigger.Configuration.customiseSettings
 from L1Trigger.Configuration.customiseSettings import L1TSettingsToCaloParams_2022_v0_6 
