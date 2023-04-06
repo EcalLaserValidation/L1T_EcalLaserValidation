@@ -194,7 +194,7 @@ source /cvmfs/cms.cern.ch/cmsset_default.sh
 export SCRAM_ARCH=$ARCH
 export CMSSW_GIT_REFERENCE=/cvmfs/cms.cern.ch/cmssw.git.daily
 scramv1 project CMSSW $CMSREL
-cp l1Ntuple_130X_dataRun3_Prompt_v1.py $CMSREL/src/.
+#cp l1Ntuple_130X_dataRun3_Prompt_v1.py $CMSREL/src/.
 cd $CMSREL/src
 eval `scramv1 runtime -sh`
 git-cms-init
@@ -230,7 +230,7 @@ cmsDriver.py l1NtupleRAWEMU_2018 -s RAW2DIGI --era=Run2_2018  \
 #now trying this with file: l1Ntuple_${GT}.py from the git repository 05 april 2023
 cmsDriver.py l1Ntuple -s RAW2DIGI --python_filename=l1Ntuple_${GT}.py -n 4000 \
 	     --no_output --no_exec --era=Run3 --data --conditions=$GT \
-	     --customise=L1Trigger/Configuration/customiseReEmul.L1TReEmulFromRAW  \
+	     --customise=L1Trigger/Configuration/customiseReEmul.L1TReEmulFromRAWsimEcalTP  \
 	     --customise=L1Trigger/Configuration/customiseSettings.L1TSettingsToCaloParams_2022_v0_6 \
 	     --customise=L1Trigger/L1TNtuples/customiseL1Ntuple.L1NtupleAODRAWEMU \
 	     --filein=inputFiles 
@@ -251,7 +251,7 @@ for sq in $sqs; do
     wget http://cern.ch/ecaltrg/EcalLin/EcalTPG_${sq}_moved_to_1.db
   fi
   python ${curdir}/ModifyL1Ntuple.py --globalTag $GT --sqlite $sq
-  cp l1Ntuple_${GT}.py l1Ntuple_${GT}_${sq}.py
+  #cp l1Ntuple_${GT}.py l1Ntuple_${GT}_${sq}.py
   #sed -i "s/%ievents%/$nevents/g" l1Ntuple_${GT}_${sq}.py
   #sed -i "s/%iov%/${sq}/g" l1Ntuple_${GT}_${sq}.py
   cp l1Ntuple_${GT}_${sq}.py ${WORKSPACE}/upload/${2}/.
