@@ -2,4 +2,4 @@ week 15
 year 2023
 run1 365054
 run2 365978
-type laser
+type lase
