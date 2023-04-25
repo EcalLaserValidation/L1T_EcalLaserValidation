@@ -2,4 +2,4 @@ week 16
 year 2023
 run1 366450
 run2 366495
-type laser
+type lasr
