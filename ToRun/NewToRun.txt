@@ -2,4 +2,4 @@ week 22
 year 2023
 run1 368224
 run2 368229
-type lase
+type laser
