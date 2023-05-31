@@ -7,7 +7,7 @@ echo " "
 ###############################
 starttime=$(date +%s.%N)
 ARCH=slc7_amd64_gcc11
-CMSREL=CMSSW_13_0_1_pre4
+CMSREL=CMSSW_13_1_0_pre4
 L1TTag=l1t-integration-v156
 GT=130X_dataRun3_Prompt_v3
 Prescale=Prescale_2022_v1_4_0.csv
