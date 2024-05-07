@@ -2,4 +2,4 @@ week 19
 year 2024
 run1 380446
 run2 380466
-type laser
+type lase
