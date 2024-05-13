@@ -10,7 +10,7 @@ echo ToRun/$file
     sqlite2=`grep "run2" ToRun/$file | awk '{print $2}'`
 cp ToRun/$file RunFiles/.
 rm ToRun/$file
-echo "./L1RateValidation_2022.sh $sqlite1 $sqlite2 $week $year"
+echo "./L1RateValidation_2024.sh $sqlite1 $sqlite2 $week $year"
 ./L1RateValidation_2024.sh $sqlite1 $sqlite2 $week $year 
 git commit -a -m "clean ToRun files"
 git push

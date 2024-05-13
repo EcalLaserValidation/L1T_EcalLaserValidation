@@ -15,7 +15,7 @@ import re
 import os
 
 def ParseCSV(GT, SQ):
-    df_menu = pandas.read_csv("results/L1Menu_%s_%s_emu.csv" % (GT, SQ))
+    df_menu = pandas.read_csv("results/L1Menu_%s_%s_emu.csv" % ("130X_dataRun3_Prompt_v3", SQ))
     df_seed = pandas.read_csv("results/L1Seed_%s_%s_emu.csv" % (GT, SQ))
     df_comp = df_seed[df_seed.L1Bit < 1000][["L1SeedName","rate0", "error_rate0"]]
     menu = df_menu.loc[df_menu.L1Bit == 9999]
