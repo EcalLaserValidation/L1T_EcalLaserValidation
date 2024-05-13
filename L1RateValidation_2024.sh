@@ -7,9 +7,8 @@ echo " "
 ###############################
 starttime=$(date +%s.%N)
 printf "Start time" $starttime
-ARCH=el9_amd64_gcc12
+ARCH=el8_amd64_gcc12
 CMSREL=CMSSW_14_0_6
-L1TTag=l1t-integration-v166
 GT=140X_dataRun3_Prompt_v2
 #Prescale=Prescale_2022_v1_4_0.csv
 Prescale=Prescale_Collisions2023_v1_3_0.csv
@@ -201,16 +200,7 @@ scramv1 project CMSSW $CMSREL
 cd $CMSREL/src
 eval `scramv1 runtime -sh`
 git-cms-init
-git remote add cms-l1t-offline git@github.com:cms-l1t-offline/cmssw.git
-git fetch cms-l1t-offline l1t-integration-CMSSW_13_2_0_pre3
-git cms-merge-topic -u cms-l1t-offline:$L1TTag
 git clone https://github.com/cms-l1t-offline/L1Trigger-L1TCalorimeter.git L1Trigger/L1TCalorimeter/data
-
-#git cms-addpkg L1Trigger/L1TCommon
-#git cms-addpkg L1Trigger/L1TMuon
-#git clone https://github.com/cms-l1t-offline/L1Trigger-L1TMuon.git L1Trigger/L1TMuon/data
-#git cms-addpkg L1Trigger/L1TCalorimeter
-#git clone https://github.com/cms-l1t-offline/L1Trigger-L1TCalorimeter.git L1Trigger/L1TCalorimeter/data
 
 git cms-checkdeps -A -a
 
