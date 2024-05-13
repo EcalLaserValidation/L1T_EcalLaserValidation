@@ -1,5 +1,5 @@
-week 19
+week 20
 year 2024
-run1 380446
-run2 380466
-type lase
+run1 380623
+run2 380647
+type laser
