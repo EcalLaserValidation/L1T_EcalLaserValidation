@@ -200,7 +200,11 @@ scramv1 project CMSSW $CMSREL
 cd $CMSREL/src
 eval `scramv1 runtime -sh`
 git-cms-init
+git cms-addpkg L1Trigger/L1TNtuples/python
 git clone https://github.com/cms-l1t-offline/L1Trigger-L1TCalorimeter.git L1Trigger/L1TCalorimeter/data
+
+sed 's/+l1UpgradeTfMuonTree/#+l1UpgradeTfMuonTree/g' L1Trigger/L1TNtuples/python/L1NtupleRAW_cff.py
+sed 's/+l1TauRecoTree/#+l1TauRecoTree/g' L1Trigger/L1TNtuples/python/L1NtupleAOD_cff.py
 
 git cms-checkdeps -A -a
 
@@ -224,7 +228,6 @@ cmsDriver.py l1NtupleRAWEMU_2018 -s RAW2DIGI --era=Run2_2018  \
 cmsDriver.py l1Ntuple -s RAW2DIGI --python_filename=l1Ntuple_${GT}.py -n 4000 \
 	     --no_output --no_exec --era=Run3 --data --conditions=$GT \
 	     --customise=L1Trigger/Configuration/customiseReEmul.L1TReEmulFromRAWsimEcalTP  \
-	     --customise=L1Trigger/Configuration/customiseSettings.L1TSettingsToCaloParams_2022_v0_6 \
 	     --customise=L1Trigger/L1TNtuples/customiseL1Ntuple.L1NtupleAODRAWEMU \
 	     --filein=inputFiles 
 
