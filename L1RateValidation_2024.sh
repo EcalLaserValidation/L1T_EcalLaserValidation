@@ -262,6 +262,8 @@ for sq in $sqs; do
     args=`printf "inputFiles=%s " "${filelist[@]:$cnt1:$NfpJ}"`
     args+=`echo outputFile=L1Ntuple_${GT}_${sq}_${i}.root`
     echo "timeout 7200 cmsRun l1Ntuple_${GT}_${sq}.py `echo $args` >& l1Ntuple_${GT}_${sq}_${i}.log  &"
+    sed 's/+l1UpgradeTfMuonTree/#+l1UpgradeTfMuonTree/g' L1Trigger/L1TNtuples/python/L1NtupleRAW_cff.py
+    sed 's/+l1TauRecoTree/#+l1TauRecoTree/g' L1Trigger/L1TNtuples/python/L1NtupleAOD_cff.py
     timeout 7200 cmsRun l1Ntuple_${GT}_${sq}.py `echo $args` >& l1Ntuple_${GT}_${sq}_${i}.log  &
     pids="$pids $!"
   done
