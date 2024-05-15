@@ -200,7 +200,7 @@ scramv1 project CMSSW $CMSREL
 cd $CMSREL/src
 eval `scramv1 runtime -sh`
 git-cms-init
-git cms-addpkg L1Trigger/L1TNtuples/python
+git cms-addpkg L1Trigger/L1TNtuples
 git cms-addpkg L1Trigger/L1TCalorimeter
 git clone https://github.com/cms-l1t-offline/L1Trigger-L1TCalorimeter.git L1Trigger/L1TCalorimeter/data
 
