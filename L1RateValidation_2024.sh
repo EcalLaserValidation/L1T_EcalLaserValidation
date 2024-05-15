@@ -211,6 +211,9 @@ git cms-checkdeps -A -a
 
 scram b -j ${nproc}
 
+sed 's/+l1UpgradeTfMuonTree/#+l1UpgradeTfMuonTree/g' L1Trigger/L1TNtuples/python/L1NtupleRAW_cff>
+sed 's/+l1TauRecoTree/#+l1TauRecoTree/g' L1Trigger/L1TNtuples/python/L1NtupleAOD_cff.py
+
 dur=$(echo "$(date +%s.%N) - $starttime" | bc)
 printf "Execution time to L1T checkout: %.6f seconds" $dur
 #----------------------------------------------------------------------------#
