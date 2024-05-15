@@ -270,7 +270,7 @@ printf "Execution time to L1Ntuple production: %.6f minutes" $dur
 
 for sq in $sqs; do
   ls $PWD/L1Ntuple_${GT}_${sq}_*.root > L1Ntuple_${GT}_${sq}.list
-  cp $PWD/L1Ntuple_${GT}_${sq}_*.log ${WORKSPACE}/upload/${2}/.
+  cp $PWD/l1Ntuple_${GT}_${sq}_*.log ${WORKSPACE}/upload/${2}/.
   #cp $PWD/L1Ntuple_${GT}_${sq}_*.root ${WORKSPACE}/upload/${2}/. 
 done
 
