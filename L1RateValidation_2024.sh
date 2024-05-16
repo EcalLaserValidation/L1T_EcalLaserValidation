@@ -198,8 +198,6 @@ export CMSSW_GIT_REFERENCE=/cvmfs/cms.cern.ch/cmssw.git.daily
 scramv1 project CMSSW $CMSREL
 #cp l1Ntuple_130X_dataRun3_Prompt_v1.py $CMSREL/src/.
 
-cp -f L1NtupleRAW_cff.py $CMSREL/src/.
-cp -f L1NtupleAOD_cff.py $CMSREL/src/.
 
 cd $CMSREL/src
 eval `scramv1 runtime -sh`
@@ -208,15 +206,15 @@ git cms-addpkg L1Trigger/L1TNtuples
 git cms-addpkg L1Trigger/L1TCalorimeter
 git clone https://github.com/cms-l1t-offline/L1Trigger-L1TCalorimeter.git L1Trigger/L1TCalorimeter/data
 
-cp -f L1NtupleRAW_cff.py L1Trigger/L1TNtuples/python/L1NtupleRAW_cff.py
-cp -f L1NtupleAOD_cff.py L1Trigger/L1TNtuples/python/L1NtupleAOD_cff.py
+cp -f ../../L1NtupleRAW_cff.py L1Trigger/L1TNtuples/python/.
+cp -f ../../L1NtupleAOD_cff.py L1Trigger/L1TNtuples/python/.
 
 git cms-checkdeps -A -a
 
 scram b -j ${nproc}
 
-cp -f L1NtupleRAW_cff.py L1Trigger/L1TNtuples/python/L1NtupleRAW_cff.py
-cp -f L1NtupleAOD_cff.py L1Trigger/L1TNtuples/python/L1NtupleAOD_cff.py
+cp -f ../../L1NtupleRAW_cff.py L1Trigger/L1TNtuples/python/.
+cp -f ../../L1NtupleAOD_cff.py L1Trigger/L1TNtuples/python/.
 
 scram b -j ${nproc}
 
