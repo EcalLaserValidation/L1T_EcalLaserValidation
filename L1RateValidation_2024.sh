@@ -206,16 +206,13 @@ git cms-addpkg L1Trigger/L1TNtuples
 git cms-addpkg L1Trigger/L1TCalorimeter
 git clone https://github.com/cms-l1t-offline/L1Trigger-L1TCalorimeter.git L1Trigger/L1TCalorimeter/data
 
-cp -f ../../L1NtupleRAW_cff.py L1Trigger/L1TNtuples/python/.
-cp -f ../../L1NtupleAOD_cff.py L1Trigger/L1TNtuples/python/.
 
 git cms-checkdeps -A -a
 
 scram b -j ${nproc}
 
-cp -f ../../L1NtupleRAW_cff.py L1Trigger/L1TNtuples/python/.
-cp -f ../../L1NtupleAOD_cff.py L1Trigger/L1TNtuples/python/.
-
+sed -e "s,+l1UpgradeTfMuonTree,#+l1UpgradeTfMuonTree,g" -i L1Trigger/L1TNtuples/python/L1NtupleRAW_cff.py
+sed -e "s,+l1TauRecoTree,#+l1TauRecoTree,g" -i L1Trigger/L1TNtuples/python/L1NtupleAOD_cff.py
 scram b -j ${nproc}
 
 dur=$(echo "$(date +%s.%N) - $starttime" | bc)
