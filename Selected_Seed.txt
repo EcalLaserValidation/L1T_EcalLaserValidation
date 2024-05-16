@@ -7,8 +7,8 @@
 L1_SingleMu22                                                                  1   1        Mu  ECAL
 L1_SingleJet180                                                                2   1        JT  ECAL
 L1_SingleJet60                                                                 3   1        JT  ECAL
-L1_SingleJet60er2p5                                                            4   1        JT  ECAL
-L1_SingleJet60_FWD3p0                                                          5   1        JT  ECAL
+L1_SingleJet120er2p5                                                           4   1        JT  ECAL
+L1_SingleJet120_FWD3p0                                                         5   1        JT  ECAL
 L1_SingleEG50                                                                  6   1        EG  ECAL
 L1_SingleEG34er2p5                                                             7   1        EG  ECAL
 L1_SingleIsoEG28er2p5                                                          8   1        EG  ECAL
