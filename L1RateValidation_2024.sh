@@ -197,6 +197,10 @@ export SCRAM_ARCH=$ARCH
 export CMSSW_GIT_REFERENCE=/cvmfs/cms.cern.ch/cmssw.git.daily
 scramv1 project CMSSW $CMSREL
 #cp l1Ntuple_130X_dataRun3_Prompt_v1.py $CMSREL/src/.
+
+cp -f L1NtupleRAW_cff.py $CMSREL/src/.
+cp -f L1NtupleAOD_cff.py $CMSREL/src/.
+
 cd $CMSREL/src
 eval `scramv1 runtime -sh`
 git-cms-init
