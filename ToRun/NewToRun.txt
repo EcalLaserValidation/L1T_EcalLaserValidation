@@ -1,5 +1,5 @@
 week 25
 year 2024
-run1 382227
-run2 382250
-type lase
+run1 382250
+run2 382258
+type laser
