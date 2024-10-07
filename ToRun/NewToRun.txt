@@ -1,5 +1,5 @@
-week 40
+week 41
 year 2024
-run1 386604
-run2 386614
+run1 386614
+run2 386640
 type laser
